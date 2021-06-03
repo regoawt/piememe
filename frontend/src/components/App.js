@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
-import TextBox from "./TextBox";
+import AbstractTextBox from "./AbstractTextBox";
+import AbstractSlider from "./AbstractSlider";
 
 export default class App extends Component {
   constructor(props) {
@@ -11,35 +12,20 @@ export default class App extends Component {
       primaryLegendItem: "No",
       primaryColour: "red",
       secondaryColour: "blue",
-      secondarySegmentFraction: 0.1,
+      secondarySegment: 10,
     };
 
-    this.handleTitleChange = this.handleTitleChange.bind(this);
-    this.handlePrimaryLegendItem = this.handlePrimaryLegendItem.bind(this);
-    this.handlePrimaryColour = this.handlePrimaryColour.bind(this);
-    this.handleSecondaryColour = this.handleSecondaryColour.bind(this);
-    this.handleSecondarySegmentFraction =
-      this.handleSecondarySegmentFraction.bind(this);
+    this.handleTextBoxChange = this.handleTextBoxChange.bind(this);
+    this.handleSliderChange = this.handleSliderChange.bind(this);
   }
 
-  handleTitleChange(titleValue) {
-    this.setState({ title: titleValue });
+  handleTextBoxChange(event) {
+    // alert(event.target.name);
+    this.setState({ [event.target.name]: event.target.value });
   }
 
-  handlePrimaryLegendItem(primaryLegendItemValue) {
-    this.setState({ primaryLegendItem: primaryLegendItemValue });
-  }
-
-  handlePrimaryColour(primaryColourValue) {
-    this.setState({ primaryColour: primaryColourValue });
-  }
-
-  handleSecondaryColour(secondaryColourValue) {
-    this.setState({ secondaryColour: secondaryColourValue });
-  }
-
-  handleSecondarySegmentFraction(secondarySegmentFractionValue) {
-    this.setState({ secondarySegmentFraction: secondarySegmentFractionValue });
+  handleSliderChange(value) {
+    this.setState({ secondarySegment: value });
   }
 
   render() {
@@ -51,31 +37,43 @@ export default class App extends Component {
           </Grid>
           <Grid container item xs="2" spacing={3}>
             <Grid item>
-              <TextBox
+              <AbstractTextBox
                 label="Title"
+                name="title"
                 value={this.state.title}
-                onChange={this.handleTitleChange}
+                onChange={this.handleTextBoxChange}
               />
             </Grid>
             <Grid item>
-              <TextBox
+              <AbstractTextBox
                 label="Legend"
+                name="primaryLegendItem"
                 value={this.state.primaryLegendItem}
-                onChange={this.handlePrimaryLegendItem}
+                onChange={this.handleTextBoxChange}
               />
             </Grid>
             <Grid item>
-              <TextBox
+              <AbstractTextBox
                 label="Colour #1"
+                name="primaryColour"
                 value={this.state.primaryColour}
-                onChange={this.handlePrimaryColour}
+                onChange={this.handleTextBoxChange}
               />
             </Grid>
             <Grid item>
-              <TextBox
+              <AbstractTextBox
                 label="Colour #2"
+                name="secondaryColour"
                 value={this.state.secondaryColour}
-                onChange={this.handleSecondaryColour}
+                onChange={this.handleTextBoxChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <AbstractSlider
+                label="Segment Size"
+                name="secondarySegment"
+                value={this.state.secondarySegment}
+                onChange={this.handleSliderChange}
               />
             </Grid>
           </Grid>

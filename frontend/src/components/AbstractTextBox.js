@@ -3,21 +3,22 @@ import FormControl from "@material-ui/core/FormControl";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import TextField from "@material-ui/core/TextField";
 
-export default class TextBox extends Component {
+export default class AbstractTextBox extends Component {
   constructor(props) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e) {
-    this.props.onChange(e.target.value);
+  handleChange(event) {
+    this.props.onChange(event);
   }
 
   render() {
     return (
       <FormControl>
         <TextField
+          name={this.props.name}
           variant="outlined"
           label={this.props.label}
           type="text"
