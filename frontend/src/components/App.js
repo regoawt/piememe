@@ -36,13 +36,20 @@ export default class App extends Component {
           <Grid item xs="6" align="center">
             <Paper>
               <PieChart
+                title={this.state.title}
                 data={[
-                  200 - this.state.secondarySegment,
-                  this.state.secondarySegment,
+                  {
+                    legend: this.state.primaryLegendItem,
+                    value: 200 - this.state.secondarySegment,
+                    colour: this.state.primaryColour,
+                  },
+                  {
+                    legend: `${this.state.primaryLegendItem}, but in ${this.state.secondaryColour}`,
+                    value: this.state.secondarySegment,
+                    colour: this.state.secondaryColour,
+                  },
                 ]}
                 outerRadius={100}
-                primaryColour={this.state.primaryColour}
-                secondaryColour={this.state.secondaryColour}
               ></PieChart>
             </Paper>
           </Grid>
