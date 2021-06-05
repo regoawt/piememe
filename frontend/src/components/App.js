@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Grid, Paper } from "@material-ui/core";
-import AbstractTextBox from "./AbstractTextBox";
-import AbstractSlider from "./AbstractSlider";
+import TextBox from "./TextBox";
+import SegmentSlider from "./SegmentSlider";
+import PieChart from "./PieChart";
 
 export default class App extends Component {
   constructor(props) {
@@ -33,11 +34,21 @@ export default class App extends Component {
       <div>
         <Grid container justify="center" spacing={2}>
           <Grid item xs="6" align="center">
-            <Paper>Random text</Paper>
+            <Paper>
+              <PieChart
+                data={[
+                  200 - this.state.secondarySegment,
+                  this.state.secondarySegment,
+                ]}
+                outerRadius={100}
+                primaryColour={this.state.primaryColour}
+                secondaryColour={this.state.secondaryColour}
+              ></PieChart>
+            </Paper>
           </Grid>
           <Grid container item xs="2" spacing={3}>
             <Grid item>
-              <AbstractTextBox
+              <TextBox
                 label="Title"
                 name="title"
                 value={this.state.title}
@@ -45,7 +56,7 @@ export default class App extends Component {
               />
             </Grid>
             <Grid item>
-              <AbstractTextBox
+              <TextBox
                 label="Legend"
                 name="primaryLegendItem"
                 value={this.state.primaryLegendItem}
@@ -53,7 +64,7 @@ export default class App extends Component {
               />
             </Grid>
             <Grid item>
-              <AbstractTextBox
+              <TextBox
                 label="Colour #1"
                 name="primaryColour"
                 value={this.state.primaryColour}
@@ -61,7 +72,7 @@ export default class App extends Component {
               />
             </Grid>
             <Grid item>
-              <AbstractTextBox
+              <TextBox
                 label="Colour #2"
                 name="secondaryColour"
                 value={this.state.secondaryColour}
@@ -69,7 +80,7 @@ export default class App extends Component {
               />
             </Grid>
             <Grid item xs={12}>
-              <AbstractSlider
+              <SegmentSlider
                 label="Segment Size"
                 name="secondarySegment"
                 value={this.state.secondarySegment}

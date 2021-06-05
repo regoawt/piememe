@@ -3,7 +3,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Slider from "@material-ui/core/Slider";
 import { Typography } from "@material-ui/core";
 
-export default class AbstractSlider extends Component {
+export default class SegmentSlider extends Component {
   constructor(props) {
     super(props);
 
