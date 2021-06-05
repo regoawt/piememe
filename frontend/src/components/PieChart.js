@@ -23,6 +23,7 @@ export default class PieChart extends Component {
   render() {
     return (
       <div>
+        <Typography variant="h4">{this.props.title}</Typography>
         <LegendOrdinal
           scale={this.colourScale}
           domain={this.props.data.map((l) => l.legend)}

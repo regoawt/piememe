@@ -53,47 +53,51 @@ export default class App extends Component {
               ></PieChart>
             </Paper>
           </Grid>
-          <Grid container item xs="2" spacing={3}>
-            <Grid item>
-              <TextBox
-                label="Title"
-                name="title"
-                value={this.state.title}
-                onChange={this.handleTextBoxChange}
-              />
-            </Grid>
-            <Grid item>
-              <TextBox
-                label="Legend"
-                name="primaryLegendItem"
-                value={this.state.primaryLegendItem}
-                onChange={this.handleTextBoxChange}
-              />
-            </Grid>
-            <Grid item>
-              <TextBox
-                label="Colour #1"
-                name="primaryColour"
-                value={this.state.primaryColour}
-                onChange={this.handleTextBoxChange}
-              />
-            </Grid>
-            <Grid item>
-              <TextBox
-                label="Colour #2"
-                name="secondaryColour"
-                value={this.state.secondaryColour}
-                onChange={this.handleTextBoxChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <SegmentSlider
-                label="Segment Size"
-                name="secondarySegment"
-                value={this.state.secondarySegment}
-                onChange={this.handleSliderChange}
-              />
-            </Grid>
+          <Grid container item xs="2">
+            <Paper>
+              <Grid container item spacing={3}>
+                <Grid item>
+                  <TextBox
+                    label="Title"
+                    name="title"
+                    value={this.state.title}
+                    onChange={this.handleTextBoxChange}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextBox
+                    label="Legend"
+                    name="primaryLegendItem"
+                    value={this.state.primaryLegendItem}
+                    onChange={this.handleTextBoxChange}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextBox
+                    label="Colour #1"
+                    name="primaryColour"
+                    value={this.state.primaryColour}
+                    onChange={this.handleTextBoxChange}
+                  />
+                </Grid>
+                <Grid item>
+                  <TextBox
+                    label="Colour #2"
+                    name="secondaryColour"
+                    value={this.state.secondaryColour}
+                    onChange={this.handleTextBoxChange}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <SegmentSlider
+                    label="Segment Size"
+                    name="secondarySegment"
+                    value={this.state.secondarySegment}
+                    onChange={this.handleSliderChange}
+                  />
+                </Grid>
+              </Grid>
+            </Paper>
           </Grid>
         </Grid>
       </div>
