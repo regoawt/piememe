@@ -1,21 +1,27 @@
 import React, { Component } from "react";
-import { Grid, Paper } from "@material-ui/core";
+import { Grid, Paper, Button } from "@material-ui/core";
 import TextBox from "./TextBox";
 import SegmentSlider from "./SegmentSlider";
 import PieChart from "./PieChart";
 import { exportComponentAsJPEG } from "react-component-export-image";
 import "../static/css/App.css";
+import "../static/css/index.css";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
-  controls: {
-    margin: "20px auto 0px auto",
-    padding: "20px",
+  controlsPaper: {
+    margin: "100px auto 0px auto",
+    padding: "20px 20px 0px 20px",
+    backgroundColor: "#f8f8ff",
   },
-  pie: {
+  piePaper: {
+    margin: "100px auto 0px auto",
+    padding: "20px 20px",
+    backgroundColor: "#f8f8ff",
+  },
+  saveButton: {
     margin: "20px auto 0px auto",
-    padding: "20px",
-    backgroundColor: "white",
+    backgroundColor: "#f8f8ff",
   },
 });
 
@@ -24,10 +30,10 @@ class App extends Component {
     super(props);
 
     this.state = {
-      title: "Chart",
+      title: "Title",
       primaryLegendItem: "No",
-      primaryColour: "red",
-      secondaryColour: "blue",
+      primaryColour: "#282c34",
+      secondaryColour: "turquoise",
       secondarySegment: 10,
     };
 
@@ -51,8 +57,8 @@ class App extends Component {
     return (
       <div>
         <Grid container justify="center" spacing={2}>
-          <Grid item xs="6" align="center">
-            <Paper ref={this.printComponentRef} className={classes.pie}>
+          <Grid item xs="5" align="center">
+            <Paper ref={this.printComponentRef} className={classes.piePaper}>
               <PieChart
                 title={this.state.title}
                 data={[
@@ -70,17 +76,18 @@ class App extends Component {
                 outerRadius={100}
               ></PieChart>
             </Paper>
-            <button
+            <Button
+              className={classes.saveButton}
               onClick={() =>
                 exportComponentAsJPEG(this.printComponentRef, "test.jpg")
               }
             >
               Save
-            </button>
+            </Button>
           </Grid>
           <Grid container item xs="2">
-            <Paper className={classes.controls}>
-              <Grid container item spacing={3}>
+            <Paper className={classes.controlsPaper}>
+              <Grid container item spacing={2}>
                 <Grid item>
                   <TextBox
                     className="TextBox"

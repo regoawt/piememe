@@ -5,11 +5,8 @@ import TextField from "@material-ui/core/TextField";
 import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
-  root: {
-    color: "red",
-  },
   input: {
-    backgroundColor: "white",
+    backgroundColor: "#f8f8ff",
   },
 });
 
