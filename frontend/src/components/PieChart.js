@@ -23,7 +23,9 @@ export default class PieChart extends Component {
   render() {
     return (
       <div>
-        <Typography variant="h5">{this.props.title}</Typography>
+        <Typography variant="h5" style={{ marginBottom: "20px" }}>
+          {this.props.title}
+        </Typography>
         <LegendOrdinal
           scale={this.colourScale}
           domain={this.props.data.map((l) => l.legend)}
@@ -48,8 +50,8 @@ export default class PieChart extends Component {
             })
           }
         </LegendOrdinal>
-        <svg width={200} height={200}>
-          <Group top={100} left={100}>
+        <svg width={200} height={250}>
+          <Group top={130} left={100}>
             <Pie
               data={this.props.data}
               pieValue={this.values}

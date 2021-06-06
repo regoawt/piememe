@@ -10,8 +10,8 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = (theme) => ({
   controlsPaper: {
-    margin: "100px auto 0px auto",
-    padding: "20px 20px 0px 20px",
+    margin: "100px auto 10px auto",
+    padding: "30px 20px",
     backgroundColor: "#f8f8ff",
   },
   piePaper: {
@@ -57,7 +57,7 @@ class App extends Component {
     return (
       <div>
         <Grid container justify="center" spacing={2}>
-          <Grid item xs="5" align="center">
+          <Grid item sm="5" xs="11" align="center">
             <Paper ref={this.printComponentRef} className={classes.piePaper}>
               <PieChart
                 title={this.state.title}
@@ -87,9 +87,9 @@ class App extends Component {
               Save
             </Button>
           </Grid>
-          <Grid container item xs="2">
+          <Grid container item sm="2" xs="11">
             <Paper className={classes.controlsPaper}>
-              <Grid container item spacing={2}>
+              <Grid container item spacing={3}>
                 <Grid item>
                   <TextBox
                     className="TextBox"
