@@ -79,7 +79,9 @@ class App extends Component {
             <Button
               className={classes.saveButton}
               onClick={() =>
-                exportComponentAsJPEG(this.printComponentRef, "test.jpg")
+                exportComponentAsJPEG(this.printComponentRef, {
+                  fileName: `piememe-${this.state.title}.jpg`,
+                })
               }
             >
               Save
