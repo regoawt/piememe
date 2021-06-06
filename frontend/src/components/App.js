@@ -3,8 +3,23 @@ import { Grid, Paper } from "@material-ui/core";
 import TextBox from "./TextBox";
 import SegmentSlider from "./SegmentSlider";
 import PieChart from "./PieChart";
+import { exportComponentAsJPEG } from "react-component-export-image";
+import "../static/css/App.css";
+import { withStyles } from "@material-ui/core/styles";
 
-export default class App extends Component {
+const styles = (theme) => ({
+  controls: {
+    margin: "20px auto 0px auto",
+    padding: "20px",
+  },
+  pie: {
+    margin: "20px auto 0px auto",
+    padding: "20px",
+    backgroundColor: "white",
+  },
+});
+
+class App extends Component {
   constructor(props) {
     super(props);
 
@@ -18,6 +33,8 @@ export default class App extends Component {
 
     this.handleTextBoxChange = this.handleTextBoxChange.bind(this);
     this.handleSliderChange = this.handleSliderChange.bind(this);
+
+    this.printComponentRef = React.createRef();
   }
 
   handleTextBoxChange(event) {
@@ -30,11 +47,12 @@ export default class App extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <Grid container justify="center" spacing={2}>
           <Grid item xs="6" align="center">
-            <Paper>
+            <Paper ref={this.printComponentRef} className={classes.pie}>
               <PieChart
                 title={this.state.title}
                 data={[
@@ -52,12 +70,20 @@ export default class App extends Component {
                 outerRadius={100}
               ></PieChart>
             </Paper>
+            <button
+              onClick={() =>
+                exportComponentAsJPEG(this.printComponentRef, "test.jpg")
+              }
+            >
+              Save
+            </button>
           </Grid>
           <Grid container item xs="2">
-            <Paper>
+            <Paper className={classes.controls}>
               <Grid container item spacing={3}>
                 <Grid item>
                   <TextBox
+                    className="TextBox"
                     label="Title"
                     name="title"
                     value={this.state.title}
@@ -104,3 +130,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withStyles(styles)(App);
